@@ -1,3 +1,6 @@
+const randomizer = require('./lib/randomizer');
+const jokesLib = require('./lib/jokes');
+
 const app = {};
 
 app.config = {
@@ -10,7 +13,7 @@ app.printAJoke = function() {
 
     const numberOfJokes = allJokes.length;
 
-    const randomNumber = mathLib.getRandomNumber(1,numberOfJokes);
+    const randomNumber = randomizer.getRandomNumber(1,numberOfJokes);
 
     const selectedJoke = allJokes[randomNumber - 1];
 
@@ -19,7 +22,7 @@ app.printAJoke = function() {
 
 // TODO: write a function that calls printJoke infinitely
 app.infiniteLoop = function() {
-
+  setInterval(app.printAJoke,app.config.timeBetweenJokes);
 }
 
 // and finally invoke the loop
